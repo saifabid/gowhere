@@ -3,6 +3,7 @@ package gowhere
 import (
 	"fmt"
 	"sort"
+	"strings"
 )
 
 // Country holds the counties details
@@ -89,4 +90,13 @@ func Name(code string) string {
 		return ""
 	}
 	return c.Name
+}
+
+func FindCountryBySymbol(sym string) *Country {
+	for _, c := range Countries {
+		if strings.Contains(c.CurrencySymbol, sym) {
+			return &c
+		}
+	}
+	return nil
 }
