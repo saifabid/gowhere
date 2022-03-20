@@ -26,6 +26,17 @@ func GetCountry(code string) (Country, error) {
 	return Country{}, fmt.Errorf("could not find country: %s", code)
 }
 
+// GetCountryByCurrencyCode returns a country based on the code
+func GetCountryByCurrencyCode(code string) (Country, error) {
+	for _, c := range Countries {
+		if c.Currency == code {
+			return c, nil
+		}
+	}
+
+	return Country{}, fmt.Errorf("could not find country: %s", code)
+}
+
 // CountryNames returns a list of country names, sorted by alpha
 func CountryNames() []string {
 	s := []string{}
